@@ -8,10 +8,31 @@
     <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
     <script src="https://peterolson.github.io/BigInteger.js/BigInteger.min.js"></script>
     <script src="main.js"></script>
+    <link rel="stylesheet preload" href="styles.css" as="style">
   </head>
-  <body>
-    <button onclick="connectMetamask()">Connect To Metamask</button>
-    <br />
+  <body style="background-color:black;">
+  <!-- <div class="banner-wrapper"><img src="banner.jpg" alt="centered image" height="25%" width="100%" style="overflow:hidden;"> </div> -->
+    <div class="minting-wrapper">
+      <div class="logo">
+        <img src="https://harems.io/Harems-2-small.png" />
+      </div>
+      <div class="slide-info-container">
+        <p id="harems-mint-info">Use the slider to mint up to 10 Harem Girls. Each Harem Girl costs 0.10ETH + Gas.</p>
+      </div>
+      <div class="slidecontainer">
+        <input type="range" min="1" max="20" value="1" class="slider" id="mintRange">
+      </div>
+      <button class="pay-button" id="payButton">Mint 3 Harem Girls</button>
+
+      <div class="contract-info-container">
+        <button class="metamask-button" onclick="connectMetamask()"><img src="/images/metamask-fox.png"/>Connect To Metamask</button>
+        <p><a href="" target="_blank">Contract</a></p>
+      </div>
+  </div>
+
+
+
+    <!-- <br />
 
     <label for="to_mint">number of nfts to mint (1-10):</label>
     <input
@@ -20,10 +41,23 @@
       name="to_mint"
       value="1"
       min="1"
-      max="10"
+      max="20"
       required
     />
     <br />
-    <button onclick="mint()">Mint</button>
+    <button onclick="mint()">Mint</button> -->
+    <script type="text/javascript">
+
+      var slider = document.getElementById("mintRange");
+      var output = document.getElementById("payButton");
+      output.innerHTML = "MINT " + slider.value + "<br /> Harem Girls";
+
+      // Update the current slider value (each time you drag the slider handle)
+      slider.oninput = function() {
+        output.innerHTML = "Mint " + slider.value + "<br /> Harem Girls";
+      }
+
+    </script>
+
   </body>
 </html>
