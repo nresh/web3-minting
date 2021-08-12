@@ -1,0 +1,205 @@
+body {
+  align-items: center;
+  background-image: url('images/home-bg.png');
+  display: flex;
+  flex-direction: column;
+  font-family: "courier new";
+  height: 100vh;
+  justify-content: space-around;
+}
+.banner-wrapper {
+  display:block;
+  width:90%;
+  max-width:980px;
+  border: 2px solid #ffffff;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  margin-left:auto;
+  margin-right:auto;
+  box-shadow: 0 0 1vw #ffffff;
+}
+
+.contract-info-container {
+  align-items: center;
+  display:flex;
+  font-size: 15px;
+  margin: 40px auto;
+  text-align: center;
+}
+.contract-info-container > * {
+  margin: 15px;
+}
+.contract-info-container a{
+  color: #e172ff;
+}
+.metamask-button {
+  align-items: center;
+  background: black;
+  border: 1px solid white;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+  font-weight: bold;
+  justify-content: center;
+  padding: 15px;
+  max-height: 50px;
+}
+.metamask-button:hover {
+  background-color: white;
+  color: #f6901c
+}
+
+.metamask-button img{
+  margin-right: 20px;
+  max-height: 30px;
+}
+.minting-wrapper {
+  align-items: center;
+  background-color: black;
+  border: 2px solid #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 1vw #ffffff;
+  display:flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width:980px;
+  min-width: 300px;
+  width:90%;
+}
+
+.minting-wrapper .logo {
+  margin: 30px 0;
+  max-width:300px;
+  text-align: center;
+}
+.minting-wrapper .logo img {
+  width: 90%;
+}
+.mint-button {
+  border-radius: 8px;
+
+  background-color: #000000;
+  border: 2px solid #e172ff;
+  box-shadow: 0 0 2vw #e172ff;
+  color: #e172ff;
+  cursor: pointer;
+  display: block;
+  font-size: 30px;
+  font-family: "courier new";
+  font-weight: bold;
+  min-width: 270px;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: box-shadow .2s;
+  transition: background-color .2s;
+  transition: color .2s;
+  transition: border .2s;
+}
+.mint-button:hover {
+  border: 2px solid #ffffff;
+  color: #ffffff;
+  background-color: #e172ff;
+  box-shadow: 0 0 3vw #ee3839;
+}
+
+.slide-info-container {
+  color: white;
+  font-family: "courier new";
+  font-size: 20px;
+  display: table;
+  margin: 0 20px;
+  max-width: 575px;
+  text-align: center;
+}
+.slide-info-container p {
+  margin:0;
+}
+
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 8px;
+  background: black;
+  display: inline-block;
+  outline: 2px solid #e172ff;
+  opacity: 1;
+  margin: 40px auto;
+  padding: 15px;
+  width: 70%;
+}
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  background-image: url('/images/slider-image.png');
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  border: 0;
+  border-radius: 25px;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 75px;
+  outline: 0px;
+  width: 75px;
+}
+
+.slider::-moz-range-thumb {
+  appearance: none;
+  background-color: transparent;
+  background-image: url('/images/slider-image.png');
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  border: 0;
+  cursor: pointer;
+  height: 75px;
+  outline: 0px;
+  width: 75px;
+}
+
+.slider::-webkit-slider-thumb:hover {
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb:hover {
+  cursor: pointer;
+}
+
+.slide-container {
+  align-items: center;
+  display: flex;
+  text-align: center;
+  width: 100%;
+}
+.slidernumber {
+  display: inline;
+  color: white;
+  font-size: 3vw;
+  font-family: "courier new";
+}
+
+@media (max-width: 768px) {
+  body {
+    margin: 50px auto;
+    max-height: 150vh;
+  }
+  .minting-wrapper .logo img {
+    width: 70%;
+  }
+  .mint-button {
+    font-size: 25px;
+  }
+  .slider::-webkit-slider-thumb, .slider::-moz-range-thumb {
+    height: 50px;
+    width:50px;
+  }
+  .slide-info-container {
+    font-size: 18px;
+  }
+}

@@ -773,7 +773,7 @@ async function connectMetamask() {
 }
 
 async function mint() {
-  let totalToMint = document.getElementById("to_mint").value;
+  let totalToMint = document.getElementById("toMint").value;
   var web3 = new Web3(Web3.givenProvider);
   window.contract = await new web3.eth.Contract(mainnetAbi, mainnetContract);
   const transactionParameters = {
