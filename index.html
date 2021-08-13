@@ -22,7 +22,7 @@
         <input type="range" min="1" max="20" value="1" class="slider" id="toMint">
       </div>
       <div class="mint-button-container">
-        <button class="mint-button" onclick="mint()" id="mintButton">Mint 3 Harem Girls</button>
+        <button class="mint-button" onclick="mint()" id="mintButton">Mint 1 Harem Girls</button>
       </div>
       <div class="contract-info-container">
         <button class="metamask-button" onclick="connectMetamask()"><img src="/images/metamask-fox.png"/>Connect To Metamask</button>
@@ -30,16 +30,38 @@
       </div>
   </div>
   <script type="text/javascript">
+    var mintButton = document.getElementById("mintButton");
+    var mintInfo = document.getElementById("harems-mint-info");
     var slider = document.getElementById("toMint");
-    var output = document.getElementById("mintButton");
 
-    output.innerHTML = "Mint " + slider.value + "<br /> Harem Girls";
+    const sliderString = (val) => { return `Mint ${val} <br /> Harem Girl${val > 1 ? 's' : ''}` }
+
+    mintButton.innerHTML = sliderString(parseInt(slider.value));
 
     // Update the current slider value (each time you drag the slider handle)
-    slider.oninput = function() {
-      output.innerHTML = "Mint " + slider.value + "<br /> Harem Girls";
+    slider.oninput = async function() {
+      const val = parseInt(slider.value);
+
+      mintButton.innerHTML = sliderString(val);
     }
 
+    window.onload = async function(e){
+      const maxMint = await leftToMint();
+
+      if(maxMint === 0) {
+        mintButton.innerHTML = "All the Harem Girls have been minted.";
+        mintButton.disabled = true;
+
+        mintInfo.style.display =  "none";
+
+        slider.disabled = true;
+        slider.style.display = "none";
+      } else if(maxMint < 20) {
+        mintInfo.innerHTML = `Use the slider to mint up to ${maxMint} Harem Girl${maxMint > 1 ? 's' : ''}. Each Harem Girl costs 0.069ETH + Gas.`;
+
+        slider.max = maxMint;
+      }
+    }
   </script>
   </body>
 </html>

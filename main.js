@@ -737,10 +737,12 @@ const mainnetAbi = [
   }
 ];
 
-const cost = "69000000000000000";
+const COST = "69000000000000000";
+const MAX_SUPPLY = 10000;
 
 var Web3;
 var window;
+var web3 = new Web3(Web3.givenProvider);
 
 async function getAccounts() {
   try {
@@ -774,12 +776,12 @@ async function connectMetamask() {
 
 async function mint() {
   let totalToMint = document.getElementById("toMint").value;
-  var web3 = new Web3(Web3.givenProvider);
   window.contract = await new web3.eth.Contract(mainnetAbi, mainnetContract);
+
   const transactionParameters = {
     to: mainnetContract,
     from: (await this.getAccounts())[0],
-    value: bigInt(cost).multiply(bigInt(totalToMint.toString())).toString(16),
+    value: bigInt(COST).multiply(bigInt(totalToMint.toString())).toString(16),
     data: window.contract.methods.mint(totalToMint).encodeABI(),
   };
   try {
@@ -790,4 +792,11 @@ async function mint() {
   } catch (error) {
     console.log(error);
   }
+}
+
+async function leftToMint() {
+  window.contract = await new web3.eth.Contract(mainnetAbi, mainnetContract);
+  const numMinted = parseInt(await window.contract.methods.totalSupply().call());
+
+  return MAX_SUPPLY - numMinted;
 }
