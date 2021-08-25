@@ -16,7 +16,8 @@
         <img src="https://harems.io/Harems-2-small.png" />
       </div>
       <div class="slide-info-container">
-        <p id="harems-mint-info">Use the slider to mint up to 20 Harem Girls. Each Harem Girl costs 0.069ETH + Gas.</p>
+        <p id="haremsMintInfo">Use the slider to mint up to 20 Harem Girls. Each Harem Girl costs 0.069ETH + Gas.</p>
+        <p id="remainingToMint"></p>
       </div>
       <div class="slide-container">
         <input type="range" min="1" max="20" value="1" class="slider" id="toMint">
@@ -31,8 +32,9 @@
   </div>
   <script type="text/javascript">
     var mintButton = document.getElementById("mintButton");
-    var mintInfo = document.getElementById("harems-mint-info");
+    var mintInfo = document.getElementById("haremsMintInfo");
     var slider = document.getElementById("toMint");
+    var remaining = document.getElementById("remainingToMint");
 
     const sliderString = (val) => { return `Mint ${val} <br /> Harem Girl${val > 1 ? 's' : ''}` }
 
@@ -46,9 +48,14 @@
     }
 
     window.onload = async function(e){
-      const maxMint = await leftToMint();
+      const numLeftToMint = await leftToMint();
 
-      if(maxMint === 0) {
+      // const numLeftToMint = await leftToMint();
+      const numLeftToMint = 30;
+
+      remaining.innerHtml = `There are ${numLeftToMint} girls left to be minted.`;
+
+      if(numLeftToMint === 0) {
         mintButton.innerHTML = "All the Harem Girls have been minted.";
         mintButton.disabled = true;
 
@@ -56,10 +63,10 @@
 
         slider.disabled = true;
         slider.style.display = "none";
-      } else if(maxMint < 20) {
-        mintInfo.innerHTML = `Use the slider to mint up to ${maxMint} Harem Girl${maxMint > 1 ? 's' : ''}. Each Harem Girl costs 0.069ETH + Gas.`;
+      } else if(numLeftToMint < 20) {
+        mintInfo.innerHTML = `Use the slider to mint up to ${numLeftToMint} Harem Girl${numLeftToMint > 1 ? 's' : ''}. Each Harem Girl costs 0.069ETH + Gas.`;
 
-        slider.max = maxMint;
+        slider.max = numLeftToMint;
       }
     }
   </script>
