@@ -49,7 +49,7 @@
 
     window.onload = async function(e){
       const numLeftToMint = await leftToMint();
-
+      console.log(numLeftToMint);
       if(numLeftToMint > 0) {
         remaining.innerHTML = `<span>${numWithCommas(numLeftToMint)} girls</span> left to be minted`;
       }
