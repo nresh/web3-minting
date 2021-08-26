@@ -16,14 +16,14 @@
         <img src="https://harems.io/Harems-2-small.png" />
       </div>
       <div class="slide-info-container">
-        <p id="haremsMintInfo">Use the slider to mint up to 20 Harem Girls. Each Harem Girl costs 0.069ETH + Gas.</p>
-        <p id="remainingToMint"></p>
+        <p id="haremsMintInfo" style="margin-bottom: 10px;">Use the slider to mint up to 20 Harem Girls. Each Harem Girl costs 0.069ETH + Gas.</p>
       </div>
       <div class="slide-container">
         <input type="range" min="1" max="20" value="1" class="slider" id="toMint">
       </div>
       <div class="mint-button-container">
         <button class="mint-button" onclick="mint()" id="mintButton">Mint 1 Harem Girls</button>
+        <div id="remainingToMint"></div>
       </div>
       <div class="contract-info-container">
         <button class="metamask-button" onclick="connectMetamask()"><img src="/images/metamask-fox.png"/>Connect To Metamask</button>
@@ -50,10 +50,9 @@
     window.onload = async function(e){
       const numLeftToMint = await leftToMint();
 
-      // const numLeftToMint = await leftToMint();
-      // const numLeftToMint = 30;
-
-      remaining.innerHtml = `There are ${numLeftToMint} girls left to be minted.`;
+      if(numLeftToMint > 0) {
+        remaining.innerHTML = `<span>${numWithCommas(numLeftToMint)} girls</span> left to be minted`;
+      }
 
       if(numLeftToMint === 0) {
         mintButton.innerHTML = "All the Harem Girls have been minted.";

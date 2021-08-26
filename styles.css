@@ -7,6 +7,7 @@ body {
   height: 100vh;
   justify-content: space-around;
 }
+
 .banner-wrapper {
   display:block;
   width:90%;
@@ -108,6 +109,10 @@ body {
 .mint-button[disabled]{
   pointer-events: none;
 }
+.mint-button-container {
+  display: flex;
+  flex-direction: column;
+}
 
 .slide-info-container {
   color: white;
@@ -208,4 +213,13 @@ body {
   .slide-info-container {
     font-size: 18px;
   }
+}
+
+#remainingToMint {
+  color: #e172ff;
+  font-style: italic;
+  margin-top: 25px;
+}
+#remainingToMint span {
+  font-weight:bold;
 }
